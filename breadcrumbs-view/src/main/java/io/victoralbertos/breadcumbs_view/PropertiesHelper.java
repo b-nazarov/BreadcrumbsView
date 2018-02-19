@@ -20,69 +20,85 @@ import android.content.res.TypedArray;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 
+import java.util.Arrays;
+
 final class PropertiesHelper {
 
   static void init(BreadcrumbsView breadcrumbsView) {
     breadcrumbsView.visitedStepBorderDotColor =
-        ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_visited_step_border_dot_color);
+            ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_visited_step_border_dot_color);
     breadcrumbsView.visitedStepFillDotColor =
-        ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_visited_step_fill_dot_color);
+            ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_visited_step_fill_dot_color);
     breadcrumbsView.nextStepBorderDotColor =
-        ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_border_dot_color);
+            ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_border_dot_color);
     breadcrumbsView.nextStepFillDotColor =
-        ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_fill_dot_color);
+            ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_fill_dot_color);
     breadcrumbsView.visitedStepSeparatorColor =
-        ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_visited_step_separator_color);
+            ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_visited_step_separator_color);
     breadcrumbsView.nextStepSeparatorColor =
-        ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_separator_color);
+            ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_separator_color);
     breadcrumbsView.radius = breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_radius_dot);
     breadcrumbsView.sizeDotBorder =
-        breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_size_dot_border);
+            breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_size_dot_border);
     breadcrumbsView.heightSeparator =
-        breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_height_separator);
+            breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_height_separator);
   }
 
   static void init(BreadcrumbsView breadcrumbsView, AttributeSet attrs) {
     TypedArray a = breadcrumbsView.getContext().getTheme().obtainStyledAttributes(
-        attrs,
-        R.styleable.BreadcrumbsView,
-        0, 0);
+            attrs,
+            R.styleable.BreadcrumbsView,
+            0, 0);
 
     try {
       breadcrumbsView.nSteps = a.getInt(R.styleable.BreadcrumbsView_numberOfSteps, 0);
       if (breadcrumbsView.nSteps == 0) {
         throw new IllegalStateException(
-            "You must set a number of steps. Use 'numberOfSteps' attribute to supply a value greater than 1");
+                "You must set a number of steps. Use 'numberOfSteps' attribute to supply a value greater than 1");
       }
 
       breadcrumbsView.visitedStepBorderDotColor =
-          a.getColor(R.styleable.BreadcrumbsView_visitedStepBorderDotColor,
-              ContextCompat.getColor(breadcrumbsView.getContext(),
-                  R.color.def_visited_step_border_dot_color));
+              a.getColor(R.styleable.BreadcrumbsView_visitedStepBorderDotColor,
+                      ContextCompat.getColor(breadcrumbsView.getContext(),
+                              R.color.def_visited_step_border_dot_color));
       breadcrumbsView.visitedStepFillDotColor =
-          a.getColor(R.styleable.BreadcrumbsView_visitedStepFillDotColor,
-              ContextCompat.getColor(breadcrumbsView.getContext(),
-                  R.color.def_visited_step_fill_dot_color));
+              a.getColor(R.styleable.BreadcrumbsView_visitedStepFillDotColor,
+                      ContextCompat.getColor(breadcrumbsView.getContext(),
+                              R.color.def_visited_step_fill_dot_color));
       breadcrumbsView.nextStepBorderDotColor =
-          a.getColor(R.styleable.BreadcrumbsView_nextStepBorderDotColor,
-              ContextCompat.getColor(breadcrumbsView.getContext(),
-                  R.color.def_next_step_border_dot_color));
+              a.getColor(R.styleable.BreadcrumbsView_nextStepBorderDotColor,
+                      ContextCompat.getColor(breadcrumbsView.getContext(),
+                              R.color.def_next_step_border_dot_color));
       breadcrumbsView.nextStepFillDotColor = a.getColor(R.styleable.BreadcrumbsView_nextStepFillDotColor,
-          ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_fill_dot_color));
+              ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_fill_dot_color));
       breadcrumbsView.visitedStepSeparatorColor =
-          a.getColor(R.styleable.BreadcrumbsView_visitedStepSeparatorColor,
-              ContextCompat.getColor(breadcrumbsView.getContext(),
-                  R.color.def_visited_step_separator_color));
+              a.getColor(R.styleable.BreadcrumbsView_visitedStepSeparatorColor,
+                      ContextCompat.getColor(breadcrumbsView.getContext(),
+                              R.color.def_visited_step_separator_color));
       breadcrumbsView.nextStepSeparatorColor =
-          a.getColor(R.styleable.BreadcrumbsView_nextStepSeparatorColor,
-              ContextCompat.getColor(breadcrumbsView.getContext(),
-                  R.color.def_next_step_separator_color));
+              a.getColor(R.styleable.BreadcrumbsView_nextStepSeparatorColor,
+                      ContextCompat.getColor(breadcrumbsView.getContext(),
+                              R.color.def_next_step_separator_color));
       breadcrumbsView.radius = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_radiusDot,
-          breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_radius_dot));
+              breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_radius_dot));
       breadcrumbsView.sizeDotBorder = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_sizeDotBorder,
-          breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_size_dot_border));
+              breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_size_dot_border));
       breadcrumbsView.heightSeparator = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_heightSeparator,
-          breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_height_separator));
+              breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_height_separator));
+      breadcrumbsView.isSeparatorOnStart = a.getBoolean(R.styleable.BreadcrumbsView_separatorOnStart, false);
+      breadcrumbsView.textSize = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_textSize,
+              breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_text_size));
+      breadcrumbsView.textColorNext = a.getColor(R.styleable.BreadcrumbsView_textColorNext,
+              ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_next_step_separator_color));
+      breadcrumbsView.textColorVisited = a.getColor(R.styleable.BreadcrumbsView_textColorVisited,
+              ContextCompat.getColor(breadcrumbsView.getContext(), R.color.def_visited_step_separator_color));
+      breadcrumbsView.textTopMargin = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_textTopMargin,
+              breadcrumbsView.getResources().getDimensionPixelSize(R.dimen.def_text_top_margin));
+      String[] titles = breadcrumbsView
+              .getContext()
+              .getResources()
+              .getStringArray(a.getResourceId(R.styleable.BreadcrumbsView_stepTexts, R.array.defLabels));
+      breadcrumbsView.texts.addAll(Arrays.asList(titles));
     } finally {
       a.recycle();
     }

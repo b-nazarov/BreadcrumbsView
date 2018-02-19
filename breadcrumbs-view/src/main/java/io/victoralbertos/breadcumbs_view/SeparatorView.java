@@ -27,8 +27,8 @@ final class SeparatorView extends RelativeLayout {
   private final View separatorViewVisitedStep;
 
   SeparatorView(Context context, boolean visited, int visitedStepLineColor, int nextStepLineColor,
-      int width,
-      int height) {
+                int width,
+                int height) {
     super(context);
 
     setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
@@ -52,7 +52,6 @@ final class SeparatorView extends RelativeLayout {
   private View createSeparator(int lineColor, int width, int height) {
     View lineView = new View(getContext());
     RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width, height);
-    params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
     lineView.setLayoutParams(params);
 
     GradientDrawable border = new GradientDrawable();
@@ -66,16 +65,16 @@ final class SeparatorView extends RelativeLayout {
 
   void animateFromNextStepToVisitedStep(Runnable endAnim) {
     separatorViewVisitedStep
-        .animate()
-        .scaleX(1)
-        .withEndAction(endAnim);
+            .animate()
+            .scaleX(1)
+            .withEndAction(endAnim);
   }
 
   void animateFromVisitedStepToNextStep(Runnable endAnim) {
     separatorViewVisitedStep
-        .animate()
-        .scaleX(0)
-        .withEndAction(endAnim);
+            .animate()
+            .scaleX(0)
+            .withEndAction(endAnim);
   }
 }
 
