@@ -1,0 +1,5 @@
+<resources>
+    <array name="defLabels">
+        <item name="firstStep">text</item>
+    </array>
+</resources>

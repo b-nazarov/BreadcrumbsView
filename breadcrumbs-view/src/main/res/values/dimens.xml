@@ -2,5 +2,7 @@
 <resources>
   <dimen name="def_size_dot_border">1dp</dimen>
   <dimen name="def_height_separator">1dp</dimen>
-  <dimen name="def_radius_dot">5dp</dimen>
+  <dimen name="def_radius_dot">8dp</dimen>
+  <dimen name="def_text_top_margin">8dp</dimen>
+  <dimen name="def_text_size">12sp</dimen>
 </resources>
